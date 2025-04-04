@@ -8,29 +8,30 @@
 import Foundation
 
 extension Date {
-    static func dateFromString(_ isoString: String) -> Date? {
+
+    static func dateFromString(_ isoString: String) -> Date? { //TODO: XCTest
         let isoDateFormatter = ISO8601DateFormatter()
         isoDateFormatter.formatOptions = [.withFullDate]
         
         return isoDateFormatter.date(from: isoString)
     }
     
-    static func stringFromDate(_ date: Date) -> String? {
+    static func stringFromDate(_ date: Date) -> String? { //TODO: XCTest
         let isoDateFormatter = DateFormatter()
         isoDateFormatter.dateFormat = "dd-MM-yyyy"
         
         return isoDateFormatter.string(from: date)
     }
     
-    func getDay() -> Int {
+    func getDay() -> Int { //TODO: XCTest
         return Calendar.current.component(.day, from: self)
     }
     
-    func getMonth() -> Int {
+    func getMonth() -> Int { //TODO: XCTest
         return Calendar.current.component(.month, from: self)
     }
     
-    func getYear() -> Int {
+    func getYear() -> Int { //TODO: XCTest
         return Calendar.current.component(.year, from: self)
     }
     

@@ -8,7 +8,7 @@
 import Foundation
 
 struct ModelData {
-    static func chargement<T: Decodable>(_ nomFichier: String) -> T {
+    static func chargement<T: Decodable>(_ nomFichier: String) -> T { //TODO: XCTest
         let data: Data
         
         guard let file = Bundle.main.url(forResource: nomFichier, withExtension: nil)

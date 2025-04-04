@@ -11,6 +11,7 @@ struct Client: Codable, Hashable {
     var nom: String
     var email: String
     private var dateCreationString: String
+
     var dateCreation: Date {
         Date.dateFromString(dateCreationString) ?? Date.now
     }
@@ -22,21 +23,21 @@ struct Client: Codable, Hashable {
     }
     
     /// Constructeur
-    init(nom: String, email: String, dateCreationString: String) {
+    init(nom: String, email: String, dateCreationString: String) { //TODO: XCTest
         self.nom = nom
         self.email = email
         self.dateCreationString = dateCreationString
     }
     
     /// Fonctions
-    static func creerNouveauClient(nom: String, email: String) -> Client {
+    static func creerNouveauClient(nom: String, email: String) -> Client { //TODO: XCTest
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         
         return Client(nom: nom, email: email, dateCreationString: dateFormatter.string(from: Date.now))
     }
     
-    func estNouveauClient() -> Bool {
+    func estNouveauClient() -> Bool { //TODO: XCTest
         let aujourdhui = Date.now
         let dateCreation = self.dateCreation
         
@@ -48,14 +49,14 @@ struct Client: Codable, Hashable {
         return true
     }
     
-    func clientExiste(clientsList: [Client]) -> Bool {
+    func clientExiste(clientsList: [Client]) -> Bool { //TODO: XCTest
         if clientsList.contains(where: { $0 == self }) {
             return true
         }
         return false
     }
     
-    func formatDateVersString() -> String {
+    func formatDateVersString() -> String { //TODO: XCTest
         return Date.stringFromDate(self.dateCreation) ?? self.dateCreationString
     }
 }

@@ -106,16 +106,10 @@
 		4227406F2C3BF4DC00E7522C /* Relayance */ = {
 			isa = PBXGroup;
 			children = (
-				422740EC2C3ECCF900E7522C /* Model.swift */,
-				422740EE2C3ECD1500E7522C /* DateExtension.swift */,
-				422740702C3BF4DC00E7522C /* RelayanceApp.swift */,
-				422740742C3BF4DD00E7522C /* Assets.xcassets */,
+				43794EBA2DA01A91002BB091 /* Model */,
+				43794EB82DA019E9002BB091 /* View */,
+				43794EB92DA01A1A002BB091 /* SupportingFiles */,
 				422740762C3BF4DD00E7522C /* Preview Content */,
-				422740F42C3ECFCA00E7522C /* ListClientsView.swift */,
-				422740F62C3ECFD600E7522C /* ModelData.swift */,
-				422740F82C3ED02400E7522C /* Source.json */,
-				422740FA2C3ED0EE00E7522C /* DetailClientView.swift */,
-				422740FC2C3ED18D00E7522C /* AjoutClientView.swift */,
 			);
 			path = Relayance;
 			sourceTree = "<group>";
@@ -143,6 +137,36 @@
 				4227408D2C3BF4DD00E7522C /* RelayanceUITestsLaunchTests.swift */,
 			);
 			path = RelayanceUITests;
+			sourceTree = "<group>";
+		};
+		43794EB82DA019E9002BB091 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				422740F42C3ECFCA00E7522C /* ListClientsView.swift */,
+				422740FA2C3ED0EE00E7522C /* DetailClientView.swift */,
+				422740FC2C3ED18D00E7522C /* AjoutClientView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		43794EB92DA01A1A002BB091 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				422740702C3BF4DC00E7522C /* RelayanceApp.swift */,
+				422740742C3BF4DD00E7522C /* Assets.xcassets */,
+				422740F82C3ED02400E7522C /* Source.json */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		43794EBA2DA01A91002BB091 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				422740EC2C3ECCF900E7522C /* Model.swift */,
+				422740EE2C3ECD1500E7522C /* DateExtension.swift */,
+				422740F62C3ECFD600E7522C /* ModelData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
