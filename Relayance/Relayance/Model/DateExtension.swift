@@ -16,7 +16,7 @@ extension Date {
         return isoDateFormatter.date(from: isoString)
     }
     
-    static func stringFromDate(_ date: Date) -> String? { //TODO: XCTest
+    static func stringFromDate(_ date: Date) -> String { //TODO: XCTest
         let isoDateFormatter = DateFormatter()
         isoDateFormatter.dateFormat = "dd-MM-yyyy"
         

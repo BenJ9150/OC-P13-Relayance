@@ -57,6 +57,6 @@ struct Client: Codable, Hashable {
     }
     
     func formatDateVersString() -> String {
-        return Date.stringFromDate(self.dateCreation) ?? self.dateCreationString
+        return Date.stringFromDate(self.dateCreation)
     }
 }
