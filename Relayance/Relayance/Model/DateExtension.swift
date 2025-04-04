@@ -10,10 +10,20 @@ import Foundation
 extension Date {
 
     static func dateFromString(_ isoString: String) -> Date? { //TODO: XCTest
+        /// Try to get date with fractional seconds
         let isoDateFormatter = ISO8601DateFormatter()
-        isoDateFormatter.formatOptions = [.withFullDate]
-        
+        isoDateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        if let date = isoDateFormatter.date(from: isoString) {
+            return date
+        }
+        /// Try to get date without fractional seconds
+        isoDateFormatter.formatOptions = [.withInternetDateTime]
         return isoDateFormatter.date(from: isoString)
+        
+        // OLD:
+        // let isoDateFormatter = ISO8601DateFormatter()
+        // isoDateFormatter.formatOptions = [.withFullDate]
+        // return isoDateFormatter.date(from: isoString)
     }
     
     static func stringFromDate(_ date: Date) -> String { //TODO: XCTest
