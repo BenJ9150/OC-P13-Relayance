@@ -8,42 +8,43 @@
 import SwiftUI
 
 struct ListClientsView: View {
-    @State var clientsList: [Client] = [] // OLD: = ModelData.chargement("Source.json")
-    @State private var showModal: Bool = false
+    @StateObject var viewModel = ClientViewModel()
     
     var body: some View {
         NavigationStack {
-            List(clientsList, id: \.self) { client in
-                NavigationLink {
-                    DetailClientView(client: client)
-                } label: {
-                    Text(client.nom)
-                        .font(.title3)
+            ZStack {
+                if viewModel.clientsListLoadError.isEmpty {
+                    /// Display clients list
+                    List(viewModel.clientsList, id: \.self) { client in
+                        NavigationLink {
+                            DetailClientView(client: client)
+                        } label: {
+                            Text(client.nom)
+                                .font(.title3)
+                        }
+                    }
+                } else {
+                    /// Display error
+                    Text(viewModel.clientsListLoadError)
+                        .font(.title2)
+                        .multilineTextAlignment(.center)
+                        .padding()
                 }
             }
             .navigationTitle("Liste des clients")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Ajouter un client") {
-                        showModal.toggle()
+                        viewModel.showAddClientView.toggle()
                     }
                     .foregroundStyle(.orange)
                     .bold()
                 }
             }
-            .sheet(isPresented: $showModal, content: {
-                AjoutClientView(dismissModal: $showModal)
+            .sheet(isPresented: $viewModel.showAddClientView, content: {
+                AjoutClientView(viewModel: viewModel)
             })
         }
-        // NEW: load source.json that can throw
-        .onAppear {
-            loadSource()
-        }
-    }
-
-    private func loadSource() {
-        guard clientsList.isEmpty else { return }
-        clientsList = (try? ModelData.chargement("Source.json") as [Client]) ?? []
     }
 }
 

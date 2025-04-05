@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailClientView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.dismiss) var dismiss
     var client: Client
     
     var body: some View {
@@ -32,7 +32,7 @@ struct DetailClientView: View {
             ToolbarItem(placement: .topBarTrailing) {
                 Button("Supprimer") {
                     // suppression
-                    self.presentationMode.wrappedValue.dismiss()
+                    dismiss()
                 }
                 .foregroundStyle(.red)
                 .bold()

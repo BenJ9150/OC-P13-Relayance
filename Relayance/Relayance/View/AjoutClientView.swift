@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AjoutClientView: View {
-    @Binding var dismissModal: Bool
+    @ObservedObject var viewModel: ClientViewModel
     @State var nom: String = ""
     @State var email: String = ""
     
@@ -25,7 +25,7 @@ struct AjoutClientView: View {
                 .font(.title2)
             Button("Ajouter") {
                 //Ajout d'un client
-                dismissModal.toggle()
+                viewModel.showAddClientView.toggle()
             }
             .padding(.horizontal, 50)
             .padding(.vertical)
@@ -41,5 +41,6 @@ struct AjoutClientView: View {
 }
 
 #Preview {
-    AjoutClientView(dismissModal: .constant(false))
+    @Previewable @StateObject var viewModel = ClientViewModel()
+    AjoutClientView(viewModel: viewModel)
 }

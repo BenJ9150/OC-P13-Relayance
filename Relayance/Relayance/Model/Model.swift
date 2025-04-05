@@ -33,11 +33,6 @@ struct Client: Codable, Hashable {
     static func creerNouveauClient(nom: String, email: String) -> Client {
         let dateFormatter = ISO8601DateFormatter()
         dateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-
-        // OLD:
-        // let dateFormatter = DateFormatter()
-        // dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        
         return Client(nom: nom, email: email, dateCreationString: dateFormatter.string(from: Date.now))
     }
     

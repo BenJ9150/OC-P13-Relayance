@@ -19,11 +19,6 @@ extension Date {
         /// Try to get date without fractional seconds
         isoDateFormatter.formatOptions = [.withInternetDateTime]
         return isoDateFormatter.date(from: isoString)
-        
-        // OLD:
-        // let isoDateFormatter = ISO8601DateFormatter()
-        // isoDateFormatter.formatOptions = [.withFullDate]
-        // return isoDateFormatter.date(from: isoString)
     }
     
     static func stringFromDate(_ date: Date) -> String {
