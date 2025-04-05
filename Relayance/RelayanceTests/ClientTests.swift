@@ -139,9 +139,20 @@ extension ClientTests {
 
 extension ClientTests {
 
-    func testGivenClientCreated_WhenGettingStringDate_ThenDateHasValidUIFormat() {
+    func testGivenClientCreated_WhenGettingStringDate_ThenStringDateHasValidFormat() {
         // Given
         let client = createClient(isoString: "2023-02-20T09:15:00Z")
+        
+        // When
+        let stringDate = client.formatDateVersString()
+
+        // Then
+        XCTAssertEqual(stringDate, "20-02-2023")
+    }
+
+    func testGivenClientCreatedWithFractionalSec_WhenGettingStringDate_ThenStringDateHasValidFormat() {
+        // Given
+        let client = createClient(isoString: "2023-02-20T09:15:00.123Z")
         
         // When
         let stringDate = client.formatDateVersString()

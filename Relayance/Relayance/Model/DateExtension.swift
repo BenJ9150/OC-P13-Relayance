@@ -9,7 +9,7 @@ import Foundation
 
 extension Date {
 
-    static func dateFromString(_ isoString: String) -> Date? { //TODO: XCTest
+    static func dateFromString(_ isoString: String) -> Date? {
         /// Try to get date with fractional seconds
         let isoDateFormatter = ISO8601DateFormatter()
         isoDateFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
@@ -26,22 +26,22 @@ extension Date {
         // return isoDateFormatter.date(from: isoString)
     }
     
-    static func stringFromDate(_ date: Date) -> String { //TODO: XCTest
+    static func stringFromDate(_ date: Date) -> String {
         let isoDateFormatter = DateFormatter()
         isoDateFormatter.dateFormat = "dd-MM-yyyy"
         
         return isoDateFormatter.string(from: date)
     }
     
-    func getDay() -> Int { //TODO: XCTest
+    func getDay() -> Int {
         return Calendar.current.component(.day, from: self)
     }
     
-    func getMonth() -> Int { //TODO: XCTest
+    func getMonth() -> Int {
         return Calendar.current.component(.month, from: self)
     }
     
-    func getYear() -> Int { //TODO: XCTest
+    func getYear() -> Int {
         return Calendar.current.component(.year, from: self)
     }
     
