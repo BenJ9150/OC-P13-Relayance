@@ -9,8 +9,6 @@ import SwiftUI
 
 struct AjoutClientView: View {
     @ObservedObject var viewModel: ClientViewModel
-    @State var nom: String = ""
-    @State var email: String = ""
     
     var body: some View {
         VStack {
@@ -19,9 +17,9 @@ struct AjoutClientView: View {
                 .bold()
                 .multilineTextAlignment(.center)
             Spacer()
-            TextField("Nom", text: $nom)
+            TextField("Nom", text: $viewModel.nom)
                 .font(.title2)
-            TextField("Email", text: $email)
+            TextField("Email", text: $viewModel.email)
                 .font(.title2)
             Button("Ajouter") {
                 //Ajout d'un client
