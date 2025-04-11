@@ -77,3 +77,12 @@ extension ClientViewModel {
         return true
     }
 }
+
+// MARK: Delete client
+
+extension ClientViewModel {
+    
+    func delete(_ client: Client) {
+        clientsList.removeAll(where: { $0 == client })
+    }
+}

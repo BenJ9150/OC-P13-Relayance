@@ -132,3 +132,19 @@ extension ClientViewModelTests {
         XCTAssertNotNil(viewModel.clientsList.first(where: { $0.email == "test@test.com" }))
     }
 }
+
+// MARK: Delete client
+
+extension ClientViewModelTests {
+
+    func testGivenOnDetailPage_WhenClickOnDeleteButton_ThenGoBackAndClientIsNoLongerInTheList() {
+        // Given
+        let client = viewModel.clientsList[0]
+
+        // When
+        viewModel.delete(client)
+
+        // Then
+        XCTAssertNil(viewModel.clientsList.first(where: { $0.email == client.email }))
+    }
+}

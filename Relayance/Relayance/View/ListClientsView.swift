@@ -17,7 +17,7 @@ struct ListClientsView: View {
                     /// Display clients list
                     List(viewModel.clientsList, id: \.self) { client in
                         NavigationLink {
-                            DetailClientView(client: client)
+                            DetailClientView(viewModel: viewModel, client: client)
                         } label: {
                             Text(client.nom)
                                 .font(.title3)
