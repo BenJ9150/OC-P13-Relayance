@@ -9,6 +9,11 @@ import Foundation
 
 struct ModelData {
     static func chargement<T: Decodable>(_ nomFichier: String, from bundle: Bundle = .main) throws -> T {
+#if DEBUG
+        if CommandLine.arguments.contains("--ui_testing_json_error") {
+            throw NSError()
+        }
+#endif
         guard let file = bundle.url(forResource: nomFichier, withExtension: nil) else {
             throw NSError(
                 domain: "ModelDataError",

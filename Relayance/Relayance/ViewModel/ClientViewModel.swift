@@ -38,7 +38,7 @@ extension ClientViewModel {
         do {
             clientsList = try ModelData.chargement(clientsFile, from: bundle) as [Client]
         } catch {
-            clientsListLoadError = "Oups, une erreur est survenue lors du chargement des clients."
+            clientsListLoadError = RelayanceError.loadingJsonSourceFailed.description
         }
     }
 }

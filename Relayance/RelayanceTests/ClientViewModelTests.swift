@@ -54,6 +54,8 @@ extension ClientViewModelTests {
 
 extension ClientViewModelTests {
 
+    // MARK: Invalid textfields
+
     func testGivenOnAddClientPage_WhenFieldsAreIncompleteAndClickOnAddButton_ThenShowError() {
         // Given
         viewModel.showAddClientView = true
@@ -113,6 +115,8 @@ extension ClientViewModelTests {
         )
         XCTAssertTrue(viewModel.showAddClientView)
     }
+
+    // MARK: Add client success
 
     func testGivenOnAddClientPage_WhenValidFieldsAndClickOnAddBtn_ThenGoBackAndNewClientIsInTheList() {
         // Given
