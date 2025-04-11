@@ -48,7 +48,7 @@ extension ClientViewModel {
 extension ClientViewModel {
     
     func addClient() {
-        guard fieldsNotEmpty(), isValidEmail() else {
+        guard fieldsNotEmpty(), isValidEmail(), emailIsNew() else {
             return
         }
     }
@@ -59,10 +59,19 @@ extension ClientViewModel {
         return nameError.isEmpty && emailError.isEmpty
     }
 
-    func isValidEmail() -> Bool {
+    private func isValidEmail() -> Bool {
         let regex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let isValid = NSPredicate(format: "SELF MATCHES %@", regex).evaluate(with: email)
         emailError = isValid ? "" : RelayanceError.invalidEmail.description
         return isValid
+    }
+
+    private func emailIsNew() -> Bool {
+        if let client = clientsList.first(where: { $0.email == email }) {
+            emailError = RelayanceError.emailAlreadyExists(clientName: client.nom).description
+            return false
+        }
+        emailError = ""
+        return true
     }
 }

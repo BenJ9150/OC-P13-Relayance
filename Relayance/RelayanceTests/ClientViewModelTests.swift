@@ -87,7 +87,30 @@ extension ClientViewModelTests {
         viewModel.addClient()
 
         // Then
+        XCTAssertTrue(viewModel.nameError.isEmpty)
         XCTAssertEqual(viewModel.emailError, RelayanceError.invalidEmail.description)
+        XCTAssertTrue(viewModel.showAddClientView)
+    }
+
+    func testGivenOnAddClientPage_WhenEmailAlreadyExistAndClickOnAddButton_ThenShowError() {
+        // Given
+        viewModel.showAddClientView = true
+        XCTAssertTrue(viewModel.nameError.isEmpty)
+        XCTAssertTrue(viewModel.emailError.isEmpty)
+
+        // When
+        viewModel.name = "test"
+        viewModel.email = "mahatma.gandhi@example.com"
+
+        // And
+        viewModel.addClient()
+
+        // Then
+        XCTAssertTrue(viewModel.nameError.isEmpty)
+        XCTAssertEqual(
+            viewModel.emailError,
+            RelayanceError.emailAlreadyExists(clientName: "Mahatma Gandhi").description
+        )
         XCTAssertTrue(viewModel.showAddClientView)
     }
 }
