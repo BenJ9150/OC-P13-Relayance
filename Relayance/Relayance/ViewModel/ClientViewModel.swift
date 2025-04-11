@@ -17,8 +17,10 @@ import SwiftUI
 
     // MARK: Add client properties
 
-    @Published var nom: String = ""
+    @Published var name: String = ""
     @Published var email: String = ""
+    @Published var nameError: String = ""
+    @Published var emailError: String = ""
 
     // MARK: Init
 
@@ -38,5 +40,22 @@ extension ClientViewModel {
         } catch {
             clientsListLoadError = "Oups, une erreur est survenue lors du chargement des clients."
         }
+    }
+}
+
+// MARK: Add client
+
+extension ClientViewModel {
+    
+    func addClient() {
+        guard fieldsNotEmpty() else {
+            return
+        }
+    }
+
+    private func fieldsNotEmpty() -> Bool {
+        nameError = name.isEmpty ? RelayanceError.emptyField.description : ""
+        emailError = email.isEmpty ? RelayanceError.emptyField.description : ""
+        return nameError.isEmpty && emailError.isEmpty
     }
 }

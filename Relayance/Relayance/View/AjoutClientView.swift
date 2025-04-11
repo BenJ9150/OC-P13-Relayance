@@ -17,13 +17,11 @@ struct AjoutClientView: View {
                 .bold()
                 .multilineTextAlignment(.center)
             Spacer()
-            TextField("Nom", text: $viewModel.nom)
-                .font(.title2)
-            TextField("Email", text: $viewModel.email)
-                .font(.title2)
+            textfield("Nom", text: $viewModel.name, error: viewModel.nameError)
+            textfield("Email", text: $viewModel.email, error: viewModel.emailError)
             Button("Ajouter") {
-                //Ajout d'un client
-                viewModel.showAddClientView.toggle()
+                // Ajout d'un client
+                viewModel.addClient()
             }
             .padding(.horizontal, 50)
             .padding(.vertical)
@@ -35,6 +33,19 @@ struct AjoutClientView: View {
             Spacer()
         }
         .padding()
+    }
+
+    private func textfield(_ prompt: String, text: Binding<String>, error: String) -> some View {
+        VStack {
+            TextField(prompt, text: text)
+                .font(.title2)
+            if !error.isEmpty {
+                Text("* \(error)")
+                    .font(.caption)
+                    .foregroundStyle(.red)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
     }
 }
 
