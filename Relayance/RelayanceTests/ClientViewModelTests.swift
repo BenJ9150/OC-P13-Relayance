@@ -113,4 +113,22 @@ extension ClientViewModelTests {
         )
         XCTAssertTrue(viewModel.showAddClientView)
     }
+
+    func testGivenOnAddClientPage_WhenValidFieldsAndClickOnAddBtn_ThenGoBackAndNewClientIsInTheList() {
+        // Given
+        viewModel.showAddClientView = true
+
+        // When
+        viewModel.name = "test"
+        viewModel.email = "test@test.com"
+
+        // And
+        viewModel.addClient()
+
+        // Then
+        XCTAssertTrue(viewModel.nameError.isEmpty)
+        XCTAssertTrue(viewModel.emailError.isEmpty)
+        XCTAssertFalse(viewModel.showAddClientView)
+        XCTAssertNotNil(viewModel.clientsList.first(where: { $0.email == "test@test.com" }))
+    }
 }

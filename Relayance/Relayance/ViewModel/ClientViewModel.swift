@@ -51,6 +51,8 @@ extension ClientViewModel {
         guard fieldsNotEmpty(), isValidEmail(), emailIsNew() else {
             return
         }
+        clientsList.append(Client.creerNouveauClient(nom: name, email: email))
+        showAddClientView = false
     }
 
     private func fieldsNotEmpty() -> Bool {
