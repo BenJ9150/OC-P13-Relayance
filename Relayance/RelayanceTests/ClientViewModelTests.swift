@@ -72,4 +72,22 @@ extension ClientViewModelTests {
         XCTAssertEqual(viewModel.emailError, RelayanceError.emptyField.description)
         XCTAssertTrue(viewModel.showAddClientView)
     }
+
+    func testGivenOnAddClientPage_WhenEmailIsInvalidAndClickOnAddButton_ThenShowError() {
+        // Given
+        viewModel.showAddClientView = true
+        XCTAssertTrue(viewModel.nameError.isEmpty)
+        XCTAssertTrue(viewModel.emailError.isEmpty)
+
+        // When
+        viewModel.name = "test"
+        viewModel.email = "test.com"
+
+        // And
+        viewModel.addClient()
+
+        // Then
+        XCTAssertEqual(viewModel.emailError, RelayanceError.invalidEmail.description)
+        XCTAssertTrue(viewModel.showAddClientView)
+    }
 }
